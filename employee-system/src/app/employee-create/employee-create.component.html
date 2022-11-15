@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-employee">
+        <!-- Register form card -->
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">Create Employee</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group mb-3">
+                        <label for="inputName">Name</label>
+                        <input class="form-control" type="text" formControlName="name" />
+    
+                        <!-- error -->
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['name'].errors?.['required']">
+                            Name is required.
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inputEmail3">Email</label>
+                        <input class="form-control" type="text" formControlName="email" />
+    
+                        <!-- errors -->
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['email'].errors?.['required']">
+                            Enter your email.
+                        </div>
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['email'].errors?.['pattern']">
+                            Enter vaild email.
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inputPassword3">Designation</label>
+                        <select class="custom-select form-control"
+                                (change)="updateProfile($any($event.target).value)"
+                                formControlName="designation">
+                            <option value="">Choose...</option>
+                            <option *ngFor="let employeeProfile of EmployeeProfile"
+                                    value="{{ employeeProfile }}">
+                                {{ employeeProfile }}
+                            </option>
+                        </select>
+    
+                        <!-- errors -->
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['designation'].errors?.['required']">
+                            Choose designation.
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="inputVerify3">Mobile No.</label>
+                        <input class="form-control" type="text" formControlName="phoneNumber" />
+    
+                        <!-- errors -->
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['phoneNumber'].errors?.['required']">
+                            Enter your phone number.
+                        </div>
+                        <div class="alert alert-danger mt-1" *ngIf="submitted && myForm['phoneNumber'].errors?.['pattern']">
+                            Enter numbers only.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
