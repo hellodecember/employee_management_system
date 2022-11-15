@@ -1,6 +1,6 @@
-# Employee System
+# Employee Management System
 
-An Employee Management System application built using MongoDB, ExpressJS, AngularJS, and NodeJS (MEAN Stack).
+An employee database system application built using MongoDB, ExpressJS, AngularJS, and NodeJS (MEAN Stack).
 
 ## Functions
 Users can add, edit and delete employees from the database (full CRUD functionality). Has basic error checking and form validation.
